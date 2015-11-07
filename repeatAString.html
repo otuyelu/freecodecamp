@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Repeat a string repeat a string</h1>
+
+
+<script>
+
+
+function repeat(str, num) {
+  // repeat after me
+document.write("Given : " + str + "<br/>");
+document.write("Repeat : " + num + "<br/>");
+  var returnStr = "";
+  if (num > 0){
+    for(i = 0; i < num; i++){
+       returnStr = returnStr + str;
+       document.write(i + " Repeat : " + returnStr + "<br/>");
+    }
+  }
+  document.write(returnStr);
+}
+repeat("abc", 3);
+</script>
+
+</body>
+</html> 

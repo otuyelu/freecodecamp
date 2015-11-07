@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Capitalize first letter of every word in a given string</h1>
+<p>My first attempt</p>
+
+<script>
+function titleCase(str) {
+var returnString = "";
+  var mapStr = str.split(' ');
+  var returnString= ""
+  mapStr.forEach(function(entry){
+    var firstLetter = entry.charAt(0).toUpperCase();
+    var remainLetters = entry.substr(1).toLowerCase();
+    entry = firstLetter + remainLetters+ " ";
+    returnString = returnString.concat(" ", entry);  
+    
+  });
+document.write(returnString);
+}
+
+titleCase("I'm a little tea pot");
+titleCase("sHoRt AnD sToUt");
+titleCase("HERE IS MY HANDLE HERE IS MY SPOUT");
+</script>
+
+</body>
+</html> 

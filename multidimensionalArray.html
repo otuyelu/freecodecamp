@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Chunky Monkey</h1>
+
+<p>Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a multidimensional array.</p>
+
+
+<script>
+function chunk(arr, size) {
+  document.write("Given : " + arr + "<br/>");
+  document.write("break into : " + size + "<br/>");
+var newArray = [];
+  arrLength = arr.length;
+  var naGroup = [];
+  var naIndex = 1;
+  for (i=0; i < arrLength; i++){
+     naGroup.push(arr[i]);
+     if (naIndex < size){
+     document.write(JSON.stringify(naGroup) + "<br/>");
+      naIndex += 1;
+      document.write(naIndex + " " + size);
+     } else {
+       newArray.push(naGroup);
+naGroup = [];
+       naIndex = 1;
+     }
+
+  }
+  if (naGroup.length > 0){
+     newArray.push(naGroup);
+   }
+   document.write(JSON.stringify(newArray));
+}
+
+
+chunk([0, 1, 2, 3, 4, 5], 4)
+document.write("<br/>");
+document.write(JSON.stringify([["a", "b"], ["c", "d"]]));
+</script>
+
+</body>
+</html> 

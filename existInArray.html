@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Slasher Flick</h1>
+
+<p>Finding if an element exists in the array or not and updating the array</p>
+<p> original @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf</p>
+
+
+<script>
+
+
+function updateVegetablesCollection (veggies, veggie) {
+    document.write("Given : " + JSON.stringify(veggies) + "<br/>");
+    document.write("check for : " + veggie + "<br/>");
+    if (veggies.indexOf(veggie) === -1) {
+        veggies.push(veggie);
+        document.write('New veggies collection is : ' + JSON.stringify(veggies) + '<br/>');
+    } else if (veggies.indexOf(veggie) > -1) {
+        document.write(veggie + ' already exists in the veggies collection.<br/>');
+    }
+}
+
+var veggies = ['potato', 'tomato', 'chillies', 'green-pepper'];
+
+updateVegetablesCollection(veggies, 'spinach'); // New veggies collection is : potato,tomato,chillies,green-papper,spinach
+updateVegetablesCollection(veggies, 'spinach'); // spinach already exists in the veggies collection.
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Slasher Flick</h1>
+
+<p>Return the remaining elements of an array after chopping off n elements from the head.
+
+The head meaning the beginning of the array, or the zeroth index</p>
+
+
+<script>
+
+function slasher(arr, howMany){
+  document.write("Given : " + arr + "<br/>");
+  document.write("Cutting off : " + howMany + "<br/>");
+  slashArr = arr.splice(howMany);
+document.write(JSON.stringify(slashArr) + "<br/>");
+}
+
+slasher([1, 2, 3], 2);
+slasher([1, 2, 3], 0);
+slasher([1, 2, 3], 9);
+slasher([1, 2, 3], 4)
+</script>
+
+</body>
+</html>

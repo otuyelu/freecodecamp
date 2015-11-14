@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Seek and Destroy</h1>
+
+<p>You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.</p>
+
+
+<script>
+
+
+function destroyer(arr) {
+  // Remove all the values
+  var args = Array.prototype.slice.call(arguments);
+  var argTarget = args[0];
+  var argOptions = args.splice(1);
+  var resultArray = [];
+  document.write("Target : " + JSON.stringify(argTarget) + "<br/>");
+  document.write("options : " + JSON.stringify(argOptions) + "<br/>");
+  var argTargetLength = argTarget.length;
+  for (i=0; i < argTargetLength; i++){
+    if (argOptions.indexOf(argTarget[i]) === -1) {
+      resultArray.push(argTarget[i]);
+    }
+  }
+  document.write(JSON.stringify(resultArray));
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3)
+</script>
+
+</body>
+</html>

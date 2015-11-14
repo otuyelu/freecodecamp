@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Sum All Numbers in a Range</h1>
+
+<p>We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
+
+The lowest number will not always come first.</p>
+
+
+<script>
+
+function compareNumbers(a, b) {
+  <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort -->
+  return a - b;
+}
+function sumAll(arr) {
+  var arrSort = arr.sort(compareNumbers);
+  var firstNum = arrSort[0];
+  var lastNum = arrSort[1];
+  var arrSum = 0;
+  for (i = firstNum+1; i < lastNum; i++){
+    arrSort.push(i);
+  }
+  arrSortLength = arrSort.length;
+  for (i = 0; i < arrSortLength; i++){
+    arrSum = arrSum + arrSort[i];
+  }
+  document.write(arrSum);
+
+}
+
+sumAll([4, 20]);
+</script>
+
+</body>
+</html>

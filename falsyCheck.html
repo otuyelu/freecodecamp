@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Falsy Bouncer</h1>
+
+<p>Remove all falsy values from an array.
+
+Falsy values in javascript are false, null, 0, "", undefined, and NaN.</p>
+
+
+<script>
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  document.write("Given : " + arr + "<br/>");
+  var arrTruthy = [];
+  arrLength = arr.length;
+  for (i = 0; i < arrLength; i++ ){
+    if(arr[i]){
+      arrTruthy.push(arr[i]);
+    }
+  }
+
+  document.write(JSON.stringify(arrTruthy + "<br/>"));
+}
+
+bouncer([7, "ate", "", false, 9]);
+bouncer(["a", "b", "c"]);
+</script>
+
+</body>
+</html>

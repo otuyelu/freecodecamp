@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>vowel Checking</h1>
+
+  <p>three methods of checking for vowels
+first by RegExp;  Second by array; and third by index;  </p>
+
+
+<script>
+  function isVowelRegEx(char) {
+   if (char.length === 1) {
+    return /[aeiou]/.test(char);
+   }
+  }
+
+  var vowels = new Array('a', 'e', 'i', 'o', 'u');
+
+  function isVowel(char) {
+   if (char.length === 1) {
+    var len = vowels.length;
+    for (var i = 0; i < len; i++) {
+     if (vowels[i] === char) {
+      return true;
+     }
+    }
+    return false;
+   }
+  }
+
+  var vowelsindex = "aeiou";
+
+  function isVowelindex(char) {
+   if (char.length === 1) {
+    return vowelsindex.indexOf(char) >= 0 ? true : false;
+   }
+  }
+</script>
+
+</body>
+
+</html>

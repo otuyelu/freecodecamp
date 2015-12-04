@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Pig Latin</h1>
+
+  <p>Translate the provided string to pig latin. Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay". If a word begins with a vowel you just add "way" to the end.</p>
+
+
+  <script>
+    function titleCase(str) {
+      var mapStr = str.split(' ');
+      var returnString = "";
+      mapStr.forEach(function(entry) {
+        var firstLetter = entry.charAt(0).toUpperCase();
+        var remainLetters = entry.substr(1).toLowerCase();
+        entry = firstLetter + remainLetters;
+        returnString = returnString.concat(" ", entry);
+      });
+      return returnString.trim();
+    }
+
+    function myReplace(str, before, after) {
+      var mapStr = str.split(' ');
+      var returnString = [];
+      mapStr.forEach(function(entry) {
+        var stringToAdd = "";
+        if (entry.toLowerCase() === before) {
+          if (entry.charAt(0) === entry.charAt(0).toUpperCase()) {
+            returnString = returnString.concat(titleCase(after));
+          } else {
+            returnString = returnString.concat(after);
+          }
+        } else {
+          returnString = returnString.concat(entry);
+        }
+
+      });
+      document.write(returnString.join(" "));
+    }
+
+    //myReplace("A quick brown fox Jumped over the lazy dog", "jumped", "leaped");
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    function checkVowel(char) {
+       var vowels = ["a", "e", "i", "o", "u"];
+       var isVowel = false;
+       var vowelsLength = vowels.length;
+
+       for (var i = 0; i < vowelsLength; i++) {
+         if (vowels[i] === char) {
+          isVowel = true;
+         }
+       }
+       return isVowel;
+
+    }
+
+    function consonantCluster(str) {
+      var returnString = "";
+      strLength = str.length;
+      for (i = 0; i < strLength; i++){
+        if (checkVowel(str[i])){
+          break;
+        } else {
+          returnString = returnString + str[i];
+        }
+      }
+      return returnString;
+    }
+
+    function translate(str) {
+       var returnString = "";
+       firstChar = str.charAt(0);
+       if (checkVowel(firstChar)){
+         returnString = str + "way";
+       } else {
+         var consonants = consonantCluster(str);
+         var consonantsLength = consonants.length;
+         var remainLetters = str.substr(consonantsLength);
+         returnString = remainLetters + consonants + "ay";
+       }
+       document.write( returnString);
+    }
+
+
+
+    translate("glove");
+  </script>
+
+</body>
+
+</html>

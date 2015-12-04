@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Pig Latin</h1>
+
+<p>Translate the provided string to pig latin.
+Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
+If a word begins with a vowel you just add "way" to the end.</p>
+
+
+<script>
+function titleCase(str) {
+  var mapStr = str.split(' ');
+  var returnString = "";
+  mapStr.forEach(function(entry){
+    var firstLetter = entry.charAt(0).toUpperCase();
+    var remainLetters = entry.substr(1).toLowerCase();
+    entry = firstLetter + remainLetters;
+    returnString = returnString.concat(" ", entry);
+  });
+  return returnString.trim();
+}
+
+function myReplace(str, before, after) {
+  var mapStr = str.split(' ');
+  var returnString = [];
+  mapStr.forEach(function(entry){
+    var stringToAdd = "";
+    if (entry.toLowerCase() === before){
+      if(entry.charAt(0) === entry.charAt(0).toUpperCase()){
+        returnString = returnString.concat(titleCase(after));
+      } else{
+         returnString = returnString.concat(after);
+      }
+    } else {
+      returnString = returnString.concat(entry);
+    }
+
+  });
+ document.write(returnString.join(" "));
+}
+
+//myReplace("A quick brown fox Jumped over the lazy dog", "jumped", "leaped");
+function isVowel(char) {
+   if (char.length === 1) {
+    var len = vowels.length;
+    for (var i = 0; i < len; i++) {
+     if (vowels[i] === char) {
+      return true;
+     }
+    }
+    return false;
+   }
+  }
+function translate(str) {
+ var vowels = [a,e,i,o,u];
+ return str;
+}
+
+translate("consonant");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Where Art Thou</h1>
+
+<p>Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.</p>
+
+<p>For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the property and it's value, that was passed on as the second argument.</p>
+
+
+<script>
+function chunk(arr, size) {
+  var args = Array.prototype.slice.call(arguments);
+  document.write("Given : " + arr + "<br/>");
+  document.write("break into : " + size + "<br/>");
+var newArray = [];
+  arrLength = arr.length;
+  var naGroup = [];
+  var naIndex = 1;
+  for (i=0; i < arrLength; i++){
+     naGroup.push(arr[i]);
+     if (naIndex < size){
+     document.write(JSON.stringify(naGroup) + "<br/>");
+      naIndex += 1;
+      document.write(naIndex + " " + size);
+     } else {
+       newArray.push(naGroup);
+naGroup = [];
+       naIndex = 1;
+     }
+
+  }
+  if (naGroup.length > 0){
+     newArray.push(naGroup);
+   }
+   document.write(JSON.stringify(newArray));
+}
+
+
+function destroyer(arr) {
+  // Remove all the values
+  var args = Array.prototype.slice.call(arguments);
+  var argTarget = args[0];
+  var argOptions = args.splice(1);
+  var resultArray = [];
+  document.write("Target : " + JSON.stringify(argTarget) + "<br/>");
+  document.write("options : " + JSON.stringify(argOptions) + "<br/>");
+  var argTargetLength = argTarget.length;
+  for (i=0; i < argTargetLength; i++){
+    if (argOptions.indexOf(argTarget[i]) === -1) {
+      resultArray.push(argTarget[i]);
+    }
+  }
+  document.write(JSON.stringify(resultArray));
+}
+
+
+function where(arr, num) {
+  // Find my place in this sorted array.
+  document.write("Given : " + arr + "<br/>");
+  document.write("Find where : " + num + "<br/>");
+  arrSort = arr.sort(compareNumbers);
+  document.write("Sorted : " + arrSort + "<br/>");
+  var arrLength = arr.length;
+  var insertIndex = 0;
+  for (i=0; i < arrLength; i++){
+    if (arrSort[i] < num) {
+      document.write("arrSort[i] : " + arrSort[i] + "<br/>");
+      insertIndex = i+1;
+      document.write("insertIndex : " + insertIndex + "<br/>");
+    } else {
+       break;
+    }
+  }
+  document.write(insertIndex + "<br/>");
+}
+function compareNumbers(a, b) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  return a - b;
+}
+
+function sumAll(arr) {
+  var arrSort = arr.sort(compareNumbers);
+  var firstNum = arrSort[0];
+  var lastNum = arrSort[1];
+  var arrSum = 0;
+  for (i = firstNum+1; i < lastNum; i++){
+    arrSort.push(i);
+  }
+  arrSortLength = arrSort.length;
+  for (i = 0; i < arrSortLength; i++){
+    arrSum = arrSum + arrSort[i];
+  }
+  document.write(arrSum);
+
+}
+
+function mutation(arr) {
+  var mutated = true;
+  var arr1length = arr[1].length;
+  for(i = 0; i < arr1length; i++){
+    if (arr[0].toLowerCase().indexOf(arr[1][i].toLowerCase()) === -1) {
+    mutated = false;
+    }
+  }
+  return mutated;
+}
+
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  var arrTruthy = [];
+  arrLength = arr.length;
+  for (i = 0; i < arrLength; i++ ){
+    if(arr[i]){
+      arrTruthy.push(arr[i]);
+    }
+  }
+
+  return arrTruthy;
+}
+
+
+function remainder(arr1, arr2) {
+  // return elements present in first array but missing in second array.
+  var returnArr = [];
+  var arr1Length = arr1.length;
+  for (i = 0; i < arr1Length; i++) {
+    if (arr2.indexOf(arr1[i]) === -1) {
+      returnArr.push(arr1[i]);
+    }
+  }
+  return returnArr;
+}
+
+function diff(arr1, arr2) {
+  // Same, same; but different.
+  document.write("Given : " + arr1 + " and " + arr2 + "<br/>");
+  var first = remainder(arr1, arr2);
+  var second = remainder(arr2, arr1);
+  firstSecond = first.concat(second);
+
+  document.write("first : " + JSON.stringify(first) + "<br/>");
+  document.write("second : " + JSON.stringify(second) + "<br/>");
+  document.write("firstSecond : " + JSON.stringify(firstSecond) + "<br/>");
+  var bounceFirstSecond = bouncer(firstSecond);
+  document.write(bounceFirstSecond);
+}
+
+function convert(num) {
+  var flattened = [["M", 1000],["CM", 900], ["D", 500],["CD",400], ["C", 100],["XC", 90],["L",50],["XL",40],["X",10],["IX",9],["V",5],["IV", 4],["I",1]];;
+  var returnNumeral = "";
+  flattenedLength = flattened.length;
+  for (i = 0; i < flattenedLength; i++) {
+    var divisor = flattened[i][1];
+    var numeral = flattened[i][0];
+    if (num >= divisor){
+    times = Math.floor(num/divisor);
+    timesRoman = times * divisor;
+    num = num - timesRoman;
+    for(i=0; i < times; i++){
+      returnNumeral = returnNumeral + numeral;
+    }
+   }
+
+  }
+  return returnNumeral;
+}
+
+
+function matchProperties(arr, properties) {
+    return arr.filter(function (obj) {
+        return Object.keys(properties).every(function (key) {
+            return obj.hasOwnProperty(key) && obj[key] === properties[key];
+        });
+    });
+}
+
+
+function where(collection, source) {
+
+
+  var results = matchProperties(collection, source);
+
+  document.write(JSON.stringify(results));
+}
+where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+</script>
+
+</body>
+</html>

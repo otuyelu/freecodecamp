@@ -1,0 +1,183 @@
+// http://stackoverflow.com/questions/6237537/finding-matching-objects-in-an-array-of-objects
+function findByMatchingProperties(set, properties) {
+    return set.filter(function (entry) {
+        return Object.keys(properties).every(function (key) {
+            return entry[key] === properties[key];
+        });
+    });
+}
+----------------------------------------------------------------------------
+#first
+function where(collection, source) {
+
+  var srcKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(function (obj) {
+    for(var i = 0; i < srcKeys.length; i++) {
+      // check if obj in collection doesn't have the key
+      // or if it does have the key,
+      // then check if the property value doesn't match the value in source
+      if(!obj.hasOwnProperty(srcKeys[i]) || obj[srcKeys[i]] !== source[srcKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+# Second
+function where(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  var srcKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(function (obj) {
+    // return a Boolean value for `filter` method
+    return srcKeys.every(function (key) {
+      // reduce to Boolean value to be returned for `every` method
+      return obj.hasOwnProperty(key) && obj[key] === source[key];
+    });
+  });
+}
+
+# Third
+function where(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  var srcKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(function (obj) {
+    // return a Boolean value for filter callback using reduce method
+    return srcKeys.reduce(function (res, key) {
+      // reduce to Boolean value to be returned by reduce method
+      return obj.hasOwnProperty(key) && obj[key] === source[key];
+    }, false);
+  });
+}
+
+# Fourth
+function where(collection, source) {
+//Array for storing the matched objects
+  var arr = [];
+  //For maintaining the number of key-value matches
+  var count ;
+  collection.forEach(function(collObj) {
+  //Initialize to zero for each object in collection
+     count = 0 ;
+     for(var prop in source){
+     //Check whether the key exists and the key-value is matched
+        if( collObj.hasOwnProperty(prop) && collObj[prop] === source[prop])
+        //Increase the count if matched
+        count++;
+       }
+     //Check whether all key-value pairs in source are matched
+     if(count>=Object.keys(source).length){
+        arr.push(collObj);
+      }
+
+    });
+    return arr;
+}
+
+
+
+
+
+===========================================================
+// UNCOMMENT commented console.log statements FOR DEBUGGING
+// UNCOMMENT code between START and END ignore lines FOR DEBUGGING
+
+function where(collection, source) {
+    var src_key = Object.keys(source);
+
+    ////START ignore these lines
+    console.log('Collection: ', collection); // show the collection
+    console.log('Source    : ', source); // show the source
+    // console.log('SourceKeys: ', src_key);
+    ////END ignore till here
+
+    return collection.filter(function (item, index) {
+        // console.log('\n====== FOR OBJECT [' + index + ']: ', item);
+
+        var ret = true; // return value
+        for (var i = 0; i < src_key.length; i++) {
+
+            ////START ignore these lines
+            // console.log('Continue loop for next key in source');
+            // console.log('------ FOR SOURCE KEY [' + src_key[i] + ']');
+            // console.log('Item  : prop =  ' + src_key[i] + ', value = ' + item[src_key[i]]);
+            // console.log('Source: prop =  ' + src_key[i] + ', value = ' + source[src_key[i]]);
+            ////END ignore till here
+
+            // if the src_key[i] is present as a property in item object
+            // then check if value of property in item is equal to the value of the same prop. in source
+            if (item.hasOwnProperty(src_key[i]) &&
+                item[src_key[i]] === source[src_key[i]]) {
+            }
+            else {
+                ret = false;
+            }
+        }
+
+        ////START ignore these lines
+        // if (ret) {
+        //     console.log('>> Return true');
+        //     console.log('> Object included :)');
+        // }
+        // else {
+        //     console.log('>> Return false');
+        //     console.log('> Object NOT included :(');
+        // }
+        ////END ignore till here
+
+        return ret;
+    });
+}
+
+
+console.log('=================================================\nOutput: ', where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' }));
+console.log('\n\n#################################################\n\n');
+console.log('=================================================\nOutput: ', where([{ 'a': 5 }, { 'a': 5 }, { 'a': 5, 'b': 10 }], { 'a': 5, 'b': 10 }));
+console.log('\n\n#################################################\n\n');
+console.log('=================================================\nOutput: ', where([{ 'a': 1, 'b': 2 }, { 'a': 1 }, { 'a': 1, 'b': 2, 'c': 2 }], { 'a': 1, 'b': 2 }));
+
+console.log('\n\n#################################################\n\n');
+console.log('=================================================\nOutput: ', where([{ 'a': 1, 'b': 2 }, { 'a': 1 }, { 'a': 1, 'b': 2, 'c': 2 }], { 'd': 3, 'a': 1, 'b': 2 }));
+
+
+
+
+
+
+
+
+
+
+
+
+//Array for storing the matched objects
+  var arr = [];
+  //For maintaining the number of key-value matches
+  var count ;
+  collection.forEach(function(collObj) {
+  //Initialize to zero for each object in collection
+     count = 0 ;
+     for(var prop in source){
+     //Check whether the key exists and the key-value is matched
+        if( collObj.hasOwnProperty(prop) && collObj[prop] === source[prop])
+        //Increase the count if matched
+        count++;
+       }
+     //Check whether all key-value pairs in source are matched
+     if(count>=Object.keys(source).length){
+        arr.push(collObj);
+      }
+
+    });
+    return arr;
+}

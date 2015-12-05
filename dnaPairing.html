@@ -51,9 +51,41 @@
       document.write(returnString);
     }
 
-    function pair(str) {
-      return str;
+
+
+    function matchProperties(arr, properties) {
+      return arr.filter(function(obj) {
+        return Object.keys(properties).every(function(key) {
+          return obj.hasOwnProperty(key) && obj[key] === properties[key];
+        });
+      });
     }
+
+
+    //where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+    function elementPair(char){
+       var pairings={A:["A","T"], T:["T","A"], C:["C","G"], G:["G","C"]};
+       for (var key in pairings) {
+
+         if (key === char) {
+
+            return pairings[key] ;
+         }
+       }
+
+    }
+
+    function pair(str) {
+      var dnsStrand = [];
+      strLength = str.length;
+      for (i = 0; i < strLength; i++) {
+        dnsStrand.push(elementPair(str[i]));
+      }
+      document.write(JSON.stringify(dnsStrand));
+    }
+    pair("GCG");
+   //elementPair("A");
   </script>
 
 </body>

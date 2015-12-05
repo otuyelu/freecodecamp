@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>object key and value</h1>
+
+<p>Translate the provided string to pig latin.
+Pig Latin takes the first consonant (or consonant cluster) of an English word, moves it to the end of the word and suffixes an "ay".
+If a word begins with a vowel you just add "way" to the end.</p>
+
+
+<script>
+var obj = {
+   Fname1: "John",
+   Lname1: "Smith",
+   Age1: "23",
+   Fname2: "Jerry",
+   Lname2: "Smith",
+   Age2: "24"
+};
+var keyMatch = function (object, str) {
+for (var key in object) {
+    if (key.includes(str)) {
+        return key;
+    }
+}
+return false;
+};
+var valMatch = function (object, str) {
+for (var key in object) {
+    if (key.includes(str)) {
+        return object[key];
+    }
+}
+return false;
+};
+
+// usage
+
+document.write(keyMatch(obj, 'Fn')) // test exists returns key => "Fname1"
+document.write(valMatch(obj, 'Fn')) // return value => "John"
+
+</script>
+
+</body>
+</html>

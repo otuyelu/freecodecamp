@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Missing letters</h1>
+
+  <p>Find the missing letter in the passed letter range and return it. If all letters are present in the range, return undefined.</p>
+
+
+  <script>
+
+
+
+    function returnCharacterRange(start, stop) {
+      // Takes two number and generates the corresponding character range
+      var returnString = "";
+      for (i = start; i <= stop; i++) {
+
+        //document.write(String.fromCharCode(i) );
+        returnString = returnString + String.fromCharCode(i);
+        //document.write(returnString + "<br/>");
+      }
+      return returnString
+    }
+     function missingCharacter(arr1, arr2){
+      document.write(arr1 + "<br/>");
+      document.write(arr2 + "<br/>");
+      var arr1Length = arr1.length;
+      for (i = 0; i < arr1Length; i++) {
+        //document.write(arr1.charAt(i) + "<br/>")
+        if (arr2.indexOf(arr1.charAt(i)) === -1) {
+          return arr1.charAt(i);
+        }
+      }
+
+    }
+
+    function fearNotLetter(str) {
+      strLength = str.length;
+      firstCharCode = str.charCodeAt(0);
+      lastCharCode = str.charCodeAt(strLength - 1);
+      fullStrRange = returnCharacterRange(firstCharCode, lastCharCode);
+      missingChar = missingCharacter(fullStrRange, str);
+      document.write(missingChar);
+    }
+
+    fearNotLetter("abcef");
+    //returnCharacterRange(97, 101);
+
+  </script>
+
+</body>
+
+</html>

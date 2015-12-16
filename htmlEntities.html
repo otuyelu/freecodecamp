@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Bonfire: Convert HTML Entities</h1>
+
+  <p>Convert the characters "&", "
+    < ", ">", '"' (double quote), and "'" (apostrophe), in a string to their corresponding HTML entities.</p>
+
+
+  <script>
+
+    function convert(str) {
+      // &colon;&rpar;
+      str.replace(/&/g, '&amp;');
+      str.replace(/\"/g, '&quot;')
+      str.replace(/\'/g, '&apos;')
+      str.replace(/\</g, '&lt;')
+      str.replace(/\>/g, '&gt;')
+      return str;
+    }
+
+    convert("Dolce & Gabbana");
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Bonfire: Convert HTML Entities</h1>
+
+  <p>Convert the characters "&", "
+    < ", ">", '"' (double quote), and "'" (apostrophe), in a string to their corresponding HTML entities.</p>
+
+
+  <script>
+    function sumFibs(num) {
+      var first = 0;
+      var second = 1;
+      var sumfibonacci = 1;
+      for (fibonacci = 0; fibonacci < num;) {
+        fibonacci = first + second;
+        if (fibonacci % 2 !== 0 && fibonacci <= num) sumfibonacci += fibonacci;
+        document.write("fibonacci : " + fibonacci +" first " + first + " second " + second + "<br/>");
+        document.write("sumfibonacci : " + sumfibonacci + "<br/>");
+        first = second;
+        second = fibonacci;
+
+
+      }
+      document.write("sumfibonacci : " + sumfibonacci + "<br/>");
+
+    }
+
+    sumFibs(75025);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Bonfire: Steamroller</h1>
+
+  <p>Flatten a nested array. You must account for varying levels of nesting.</p>
+
+
+  <script>
+
+    function steamroller(arr) {
+      var flattenedArray = [];
+      var flatten = function (arg) {
+          if (!Array.isArray(arg)){
+              flattenedArray.push(arg);
+          } else {
+              arg.forEach(flatten);
+          }
+      };
+      flatten(arr);
+      return flattenedArray;
+    }
+
+    document.write(steamroller([1, [2], [3, [[4]]]])+"<br/>");
+    document.write(steamroller([[["a"]], [["b"]]]));
+  </script>
+
+</body>
+
+</html>

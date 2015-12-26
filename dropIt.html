@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Bonfire: Drop it</h1>
+
+  <p>Drop the elements of an array (first argument), starting from the front, until the predicate (second argument) returns true.</p>
+
+
+  <script>
+    function drop(arr, func) {
+      // Drop them elements.
+      var times = arr.length;
+      for (var i = 0; i < times; i++) {
+        if (func(arr[0])) {
+          break;
+        } else {
+          arr.shift();
+        }
+      }
+      return arr;
+    }
+    document.write(drop([1, 2, 3], function(n) {
+      return n < 3;
+    }));
+  </script>
+
+</body>
+
+</html>

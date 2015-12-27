@@ -8,62 +8,42 @@
   <p>Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters. The range will be an array of two numbers that will not necessarily be in numerical
     order. e.g. for 1 and 3 - find the smallest common multiple of both 1 and 3 that is evenly divisible by all numbers between 1 and 3.</p>
 
-
   <script>
-    function isPrime(num) {
-      if (num < 2) return false;
-      for (var i = 2; i < num; i++) {
-        if (num % i == 0)
-          return false;
-      }
-      return true;
-    }
-
-    function sumPrimes(max) {
-      var sumOfPrimes = 0;
-      for (var i = 0; i < max; i++) {
-        if (isPrime(i)) {
-          document.write(i + " is a prime <br/>");
-          sumOfPrimes += i;
-        }
-      }
-      return sumOfPrimes;
-    }
-
-    //document.write(sumPrimes(10));
-
-    function leastCommonMultiple(min, max) {
-      function range(min, max) {
-        var arr = [];
-        for (var i = min; i <= max; i++) {
-          arr.push(i);
-        }
-        return arr;
-      }
-
-      function gcd(a, b) {
-        return !b ? a : gcd(b, a % b);
-      }
-
-      function lcm(a, b) {
-        return (a * b) / gcd(a, b);
-      }
-
-      var multiple = min;
-      range(min, max).forEach(function(n) {
-        multiple = lcm(multiple, n);
-      });
-
-      return multiple;
-    }
-
     function smallestCommons(arr) {
-      return arr;
+        // determine which is min and max
+        var max = Math.max(arr[0], arr[1]);
+        var min = Math.min(arr[0], arr[1]);
+
+        // insert the values within the range into an array
+        function rangeMake(min, max) {
+          var returnArray = [];
+          for (i = min; i <= max; i++) {
+            returnArray.push(i);
+          }
+          return returnArray;
+        }
+
+        // Return Greatest Common Denominator of two numbers
+        function gcd(a, b) {
+          return !b ? a : gcd(b, a % b);
+        }
+
+        // return least common multiple of two numbers
+        function lcm(a, b) {
+          return (a * b) / gcd(a, b);
+        }
+
+        // calculate for all values in the range
+        var commonMultiple = min;
+        var rangeArray = rangeMake(min, max);
+        rangeArray.forEach(function(n) {
+          commonMultiple = lcm(commonMultiple, n);
+        });
+        return commonMultiple;
     }
 
 
-    //smallestCommons([1, 5]);
-    document.write(leastCommonMultiple(1, 13));
+    document.write(smallestCommons([1, 13]));
   </script>
 
 </body>

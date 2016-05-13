@@ -9,18 +9,19 @@
 
 
   <script>
-    function drop(arr, func) {
-      // Drop them elements.
-      var times = arr.length;
-      for (var i = 0; i < times; i++) {
-        if (func(arr[0])) {
-          break;
-        } else {
-          arr.shift();
-        }
+  function drop(arr, func) {
+    // Drop them elements.
+    var arrLength = arr.length;
+    for (var i = 0; i < arrLength; i++) {
+      // run the current element in the given function
+      if (func(arr[0])) {
+        break;
+      } else {
+        arr.shift();
       }
-      return arr;
     }
+    return arr;
+  }
     //document.write(drop([1, 2, 3], function(n) {return n < 3;}));
     document.write(drop([1, 2, 3, 7, 4], function(n) {return n > 3;}));
   </script>
